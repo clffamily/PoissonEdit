@@ -1,11 +1,11 @@
 %im = double(imread('../images/tropicalIsland.jpg', 'JPG'));
-im = double(imread('../images/test002.jpg', 'JPG'));
+im = double(imread('../images/sky/sky.jpg', 'JPG'));
 figure;
 %imshow(im);
 %imshow(mat2gray(im));
 
 %iminsert = double(imread('../images/rainbow001.jpg', 'JPG'));
-iminsert = double(imread('../images/test002Insert.jpg', 'JPG'));
+iminsert = double(imread('../images/sky/kite2.jpg', 'JPG'));
 figure;
 %imshow((iminsert));
 %imshow(mat2gray(iminsert));
@@ -14,8 +14,8 @@ figure;
 [imir, imig, imib] = decomposeRGB(iminsert);
 
 %boxSrc = [2 160 2 256 ];
-boxSrc = [2 60 2 60 ];
-posDest = [2 2];
+boxSrc = [1 417 1 313 ];
+posDest = [600 300];
 imr = poissonSolverInsertionHoles(imir, imr, boxSrc, posDest);
 img = poissonSolverInsertionHoles(imig, img, boxSrc, posDest);
 imb = poissonSolverInsertionHoles(imib, imb, boxSrc, posDest);

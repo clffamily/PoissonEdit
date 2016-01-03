@@ -6,21 +6,20 @@
 % figure;
 % imshow(mat2gray(iminsert));
 
-im = double(imread('../images/target_08.jpg', 'JPG'));
+im = double(imread('../images/sky/sky.jpg', 'JPG'));
 figure;
 imshow(mat2gray(im));
 
-iminsert = double(imread('../images/source_08.jpg', 'JPG'));
-imMask=uint8(imread('../images/mask_08.jpg'));
+iminsert = double(imread('../images/sky/kite2.jpg', 'JPG'));
+imMask=uint8(imread('../images/sky/optimal_mask.jpg'));
 figure;
 imshow(mat2gray(iminsert));
-
 
 [imr, img, imb] = decomposeRGB(im);
 [imir, imig, imib] = decomposeRGB(iminsert);
 
-boxSrc = [1 150 1 178 ];
-posDest = [185 200];
+boxSrc = [1 417 1 313 ];
+posDest = [600 300];
 
 imr = poissonSolverMask(imir, imr, boxSrc, posDest,imMask);
 img = poissonSolverMask(imig, img, boxSrc, posDest,imMask);

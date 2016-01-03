@@ -7,31 +7,22 @@
 %     2 6 2 6 6 6 6 
 %     1 1 1 6 6 6 6 ];
 
+%These are three parameters for input.
+separateRow = 108;
+separateCol = 334;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-shortestMatrix = constructPathGraph( costMatrix, 208, 290);
+rows = size(costMatrix, 1); 
+cols = size(costMatrix, 2); 
 
-[dist,path,pred] = graphshortestpath(shortestMatrix,72390,72740);
+startingPt = (separateRow - 2) * cols + separateCol; %72390
+endPt = startingPt + cols; %72740;
+
+shortestMatrix = constructPathGraph( costMatrix, separateRow, separateCol);
+
+[dist,path,pred] = graphshortestpath(shortestMatrix,startingPt,endPt);
 
 pathPlot = zeros(1, numel(costMatrix));
 pathPlot(uint32(path)) = 1;
-mat = vec2mat(pathPlot,350)
-
-% for i = 1 : size(mat,1)
-%     for j = 1: size(mat, 2)
-%         if mat(i,j) == 1
-%             break;
-%         else 
-%             mat(i,j) = 1;
-%         end
-%     end
-% end
-% 
-% for i = size(mat,1) : -1 :1
-%     for j = size(mat,2) : -1 :1
-%         if mat(i,j) == 1
-%             break;
-%         else 
-%             mat(i,j) = 1;
-%         end
-%     end
-% end
+mat = vec2mat(pathPlot,cols);
+drawBoundary;

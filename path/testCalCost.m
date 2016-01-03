@@ -1,5 +1,5 @@
-simg = double(imread('../images/horse.jpg', 'JPG'));
+simg = double(imread('../images/sky/kite2.jpg', 'JPG'));
 
-timg = double(imread('../images/mona-leber-target.jpg', 'JPG'));
+timg = double(imread('../images/sky/sky.jpg', 'JPG'));
 
-costMatrix = calCostMatrix( simg, timg, maskMatrix, 6, 6);
+costMatrix = calCostMatrix( simg, timg, maskMatrix, 300, 600);
