@@ -1,5 +1,5 @@
-simg = double(imread('../images/sky/kite2.jpg', 'JPG'));
+simg = double(imread('../images/wood/wood.jpg', 'JPG'));
 
-timg = double(imread('../images/sky/sky.jpg', 'JPG'));
+timg = double(imread('../images/wood/beach.jpg', 'JPG'));
 
-costMatrix = calCostMatrix( simg, timg, maskMatrix, 300, 600);
+costMatrix = calCostMatrix( simg, timg, maskMatrix, 1710, 1320); %first para is row(Y)

@@ -8,8 +8,8 @@
 %     1 1 1 6 6 6 6 ];
 
 %These are three parameters for input.
-separateRow = 108;
-separateCol = 334;
+separateRow = 191;
+separateCol = 366;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 rows = size(costMatrix, 1); 

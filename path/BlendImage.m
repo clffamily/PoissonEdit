@@ -1,48 +1,38 @@
-%
-% Blend the image
+% im = double(imread('../images/orange.tif', 'TIF'));
+% figure;
+% imshow(mat2gray(im));
 % 
-% parameters
-% imageSrc - source image
-% imageDst - destination image
-% imageMask - Mask image
-% imageSave - Save result path
-% boxSrc - the rectangular box for the selection in source, [x0 x1 y0 y1]
-% posDest - the upper left corner of the source should go to this position
-% in the destination image [x0 y0]
-function BlendImage(imageSrc,imageDst,imageMask,imageSave,boxSrc,posDest)
+% iminsert = double(imread('../images/orange.tif', 'TIF'));
+% figure;
+% imshow(mat2gray(iminsert));
 
-    %boxSrc=zeros(4);
-    %posDest=zeros(2);
-    %Load parameters
-    %{
-    file=fopen(argsPath,'r');
-    imageSrc=fscanf(file,'%s\r\n');
-    imageDst=fscanf(file,'imgDst=%s\r\n');
-    imageMask=fscanf(file,'imgMask=%s\r\n');
-    imageSave=fscanf(file,'imgSave=%s\r\n');
-    %[boxSrc(1),boxSrc(2),boxSrc(3),boxSrc(4)]
-    boxSrc=fscanf(file,'boxSrc= %d, %d, %d, %d\n');
-    %[posDest(1),posDest(2)]
-    posDest=fscanf(file,'posDest= %d, %d\n');    
-    %}
+im = double(imread('../images/wood/beach.jpg', 'JPG'));
+figure;
+imshow(mat2gray(im));
 
-    im = double(imread(imageDst));
+iminsert = double(imread('../images/wood/wood.jpg', 'JPG'));
+imMask=uint8(imread('../images/wood/optimal_mask.jpg'));
+figure;
+imshow(mat2gray(iminsert));
 
-    iminsert = double(imread(imageSrc));
-    imMask=uint8(imread(imageMask));
+[imr, img, imb] = decomposeRGB(im);
+[imir, imig, imib] = decomposeRGB(iminsert);
 
-    t=tic;
-    [imr, img, imb] = decomposeRGB(im);
-    [imir, imig, imib] = decomposeRGB(iminsert);
+boxSrc = [1 400 1 275 ];
+posDest = [1320 1710];
 
-    imr = poissonSolverMask(imir, imr, boxSrc, posDest, imMask);
-    img = poissonSolverMask(imig, img, boxSrc, posDest, imMask);
-    imb = poissonSolverMask(imib, imb, boxSrc, posDest, imMask);
+imr = poissonSolverMask(imir, imr, boxSrc, posDest,imMask);
+img = poissonSolverMask(imig, img, boxSrc, posDest,imMask);
+imb = poissonSolverMask(imib, imb, boxSrc, posDest,imMask);
 
-    imnew = composeRGB(imr, img, imb);
-    toc(t);
-    imnew = uint8(imnew);
-    figure(100);
-    imshow(imnew);
-    imwrite(imnew, imageSave, 'JPG');
-end
+imnew = composeRGB(imr, img, imb);
+imnew = uint8(imnew);
+figure(100);
+imshow(imnew);
+imwrite(imnew, '../images/Result.jpg', 'JPG');
+% poisson1(50, 51, 5);
+
+
+% im = double(imread('../images/test001BW.tif', 'TIFF'));
+% figure;
+% imshow(mat2gray(im));
