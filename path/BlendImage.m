@@ -1,14 +1,14 @@
-sourceImageWidthX = 700;
-sourceImageHeightY = 431;
-targetX = 580;
-targetY = 850;
+sourceImageWidthX = 478;
+sourceImageHeightY = 420;
+targetX = 5;
+targetY = 80;
 
-im = double(imread('../images/boat_RGB/beach.jpg', 'JPG'));
+im = double(imread('../images/qq/background.jpg', 'JPG'));
 figure;
 imshow(mat2gray(im));
 
-iminsert = double(imread('../images/boat_RGB/boat.jpg', 'JPG'));
-imMask=uint8(imread('../images/boat_RGB/optimal_mask.jpg'));
+iminsert = double(imread('../images/qq/qq.jpg', 'JPG'));
+imMask=uint8(imread('../images/qq/optimal_mask.jpg'));
 figure;
 imshow(mat2gray(iminsert));
 
@@ -27,7 +27,7 @@ imnew = uint8(imnew);
 figure(100);
 imshow(imnew);
 imwrite(imnew, '../images/Result.jpg', 'JPG');
-imwrite(imnew, '../images/boat_RGB/optimal_result.jpg', 'JPG');
+imwrite(imnew, '../images/qq/optimal_result.jpg', 'JPG');
 % poisson1(50, 51, 5);
 
 
