@@ -1,14 +1,22 @@
-%These are three parameters for input.
-separateRow = 191;
-separateCol = 366;
-colEndBoundary = 380;
+% ----------------------------------
+% This script finds the shortest path based on cost matrix computed on calCostLAB(RGB).
+% Find these parameters in cost matrix. Modify them before running.
+% ----------------------------------
+
+% separate row in cost matrix.
+separateRow = 137;
+% starting separate column in cost matrix.
+separateCol = 272;
+% ending separate column in cost matrix.
+colEndBoundary = 277;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-rows = size(costMatrix, 1); %446
-cols = size(costMatrix, 2); %350
+rows = size(costMatrix, 1); 
+cols = size(costMatrix, 2); 
 
-startingPt = (separateRow - 2) * cols + separateCol; %72390
-endPt = startingPt + cols; %72740;
+startingPt = (separateRow - 2) * cols + separateCol; 
+endPt = startingPt + cols; 
 
 shortestMatrix = constructPathGraph( costMatrix, separateRow, separateCol);
 
@@ -17,7 +25,7 @@ shortestDist = dist + shortestMatrix(endPt, startingPt);
 shortestPath = path;
 count = 1;
 
-for i = separateCol : colEndBoundary
+for i = separateCol : colEndBoundary -1
     startingPt = startingPt + 1;
     endPt = endPt + 1;
     [dist,path,pred] = graphshortestpath(shortestMatrix,startingPt,endPt);

@@ -1,6 +1,17 @@
-im = double(imread('../images/apple/optimal_result.jpg', 'JPG'));
-offsetX = 750;
-offsetY = 240;
+
+% ----------------------------------
+% This script creates the mask of the shortest path found previously on findShortestPath.
+% Write the mask into the targetFolderPath.
+% ----------------------------------
+
+% This is the parameter for input. 
+%   1 for user result, 
+%   2 for optimal result.
+fun = 1;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+im = double(imread(strcat(targetFolderPath, OPTIMAL_RESULT), 'JPG'));
 
 [ imr, img, imb ] = decomposeRGB( im );
 
@@ -14,10 +25,19 @@ newLineImage = zeros(targetRow,targetCol);
 
 for i = 1 : sourceRow
     for j = 1 : sourceCol
-        if mat2(i,j) == 0
+        if fun == 1
+            if boundaryPts(i,j)
+                newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
+            end
+        else
+            if mat2(i,j) == 0 
+                newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
+            end
+        end 
+        %if mat2(i,j) == 0 %optimal
         %if boundaryPts(i,j)
-            newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
-        end
+        %    newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
+        %end
     end
 end
 
@@ -30,3 +50,10 @@ imb(newLineImage == 1) = 0;
 
 targetWithBoundary = composeRGB(imr, img, imb);
 imshow(uint8(targetWithBoundary));
+
+if fun == 1
+    imwrite(uint8(targetWithBoundary), strcat(targetFolderPath, USER_RESULT_BOU));
+else
+    imwrite(uint8(targetWithBoundary), strcat(targetFolderPath, OPTIMAL_RESULT_BOU));
+end
+

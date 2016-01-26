@@ -1,3 +1,9 @@
+% ----------------------------------
+% This script creates boundary point matrix denoting user-drawn boundary.
+% ----------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 boundary = bwboundaries(user_mask);
 
 boundaryPts = zeros(size(user_mask));

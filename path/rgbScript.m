@@ -1,31 +1,36 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------
+% This script automates the RGB process listed in the drag and drop paper. 
+
+% It loops in 
+%   1. calculating k
+%   2. find the shortest path
+% until maxItr or the k converges.
+% ----------------------------------
+
 % These are parameters to specify.
-simg = double(imread('../images/qq/qq.jpg', 'JPG'));
-timg = double(imread('../images/qq/background.jpg', 'JPG'));
-xPara = 5;
-yPara = 80;
+% xPara = 110;
+% yPara = 300;
 maxItr = 5;
 
-% Remember to specify the paramters in the script.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 count = 1;
 
 % First para is row(Y)
-previousK = calAvgK( simg, timg, boundaryPts, yPara, xPara); 
+previousK = calAvgK( simg, timg, boundaryPts, targetOffsetY, targetOffsetX); 
 
 % First para is row(Y), maskMatrix is from data.m
-costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, yPara, xPara, previousK); 
+costMatrix = calCostMatrixRGBK( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, previousK); 
 
 % Find the shortest path in RGB graph path.
-findShortestPath; % Remember to specify the paramters in the script.
+findShortestPath; % Remember to specify the cost matrix paramters in the script.
 
 for i = 1 : maxItr
     currentK = calAvgK( simg, timg, mat, yPara, xPara); 
     if previousK == currentK
         break
     end
-    costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, yPara, xPara, currentK);
+    costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, currentK);
     previousK = currentK;
     findShortestPath;
     count = count + 1;

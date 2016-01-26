@@ -1,5 +1,12 @@
-simg = double(imread('../images/qq/qq.jpg', 'JPG'));
+% ----------------------------------
+% This script calls the calCostMatrixRGB function. 
+% The ouput will be the cost matrix.
+% ----------------------------------
 
-timg = double(imread('../images/qq/background.jpg', 'JPG'));
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, 80, 5, k); %first para is row(Y)
+%simg = double(imread('../images/cube/cube.jpg', 'JPG'));
+%timg = double(imread('../images/cube/wall.jpg', 'JPG'));
+
+%first para is row(Y)
+costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, k); 

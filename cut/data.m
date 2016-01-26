@@ -1,9 +1,9 @@
-clear all;
+% clear all;
 load CurrRes.mat;
 
-imwrite(uint8(CurrRes),'images/object.jpg');
+imwrite(uint8(CurrRes2),'images/object.jpg');
 
-maskMatrix = CurrRes(:, :, 1);
+maskMatrix = CurrRes2(:, :, 1);
 maskMatrix(maskMatrix ~= 0) = -1;
 
 user_mask = ~fixedBG;

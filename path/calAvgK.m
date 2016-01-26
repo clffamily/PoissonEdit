@@ -2,7 +2,7 @@ function [ k ] = calAvgK( simg, timg, boundaryMask, srow, scol)
 % Given the boundary mask
 % Ouput the k value.
 
-[rowsBoundary, colsBoundary] = find(boundaryMask==1);
+[rowsBoundary, colsBoundary] = find(boundaryMask == 1);
 
 [simgr, simgg, simgb] = decomposeRGB(simg);
 [timgr, timgg, timgb] = decomposeRGB(timg);

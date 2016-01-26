@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % These are parameters to specify.
-simg = double(imread('../images/apple/apple.jpg', 'JPG'));
-timg = double(imread('../images/apple/table.jpg', 'JPG'));
-xPara = 750;
-yPara = 240;
+simg = double(imread('../images/cube/cube.jpg', 'JPG'));
+timg = double(imread('../images/cube/wall.jpg', 'JPG'));
+xPara = 110;
+yPara = 300;
 maxItr = 5;
 
 % Remember to specify the paramters in the script.

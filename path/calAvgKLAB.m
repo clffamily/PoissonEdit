@@ -1,8 +1,13 @@
+% ---------------------------------
+% This function is no longer needed.
+% k is not needed for LAB channels.
+% ---------------------------------
+
 function [ k ] = calAvgKLAB( simg, timg, boundaryMask, srow, scol)
 % Given the boundary mask
 % Ouput the k value.
 
-[rowsBoundary, colsBoundary] = find(boundaryMask==1);
+[rowsBoundary, colsBoundary] = find(boundaryMask == 1);
 
 [simgl, simga, simgb] = decomposeLAB(simg);
 [timgl, timga, timgb] = decomposeLAB(timg);

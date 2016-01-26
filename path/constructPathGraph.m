@@ -6,6 +6,7 @@ rows = size(costMatrix, 1);
 cols = size(costMatrix, 2);
 total_pts = rows * cols;
 
+
 graphMatrix = sparse(total_pts, total_pts);
 
 for i = 1 : rows
@@ -25,7 +26,7 @@ for i = 1 : rows
             if i < rows
                 if (costMatrix(i+1,j) ~= (-1)) && ((i+1) ~= separateRowNum || j < separateColNum)
                     %graphMatrix(pixel_no + rows, pixel_no) = costMatrix(i,j);
-                    graphMatrix(pixel_no, pixel_no + cols) = costMatrix(i+1,j);  
+                    graphMatrix(pixel_no, pixel_no + cols) = costMatrix(i+1,j);                 
                 end   
             end
             
@@ -33,7 +34,7 @@ for i = 1 : rows
             if j > 1
                 if (costMatrix(i,j-1) ~= (-1))
                     %graphMatrix(pixel_no - 1, pixel_no) = costMatrix(i,j);
-                    graphMatrix(pixel_no, pixel_no - 1) = costMatrix(i,j-1);
+                    graphMatrix(pixel_no, pixel_no - 1) = costMatrix(i,j-1);   
                 end                                        
             end 
             
@@ -41,7 +42,7 @@ for i = 1 : rows
             if j < cols
                 if (costMatrix(i,j+1) ~= (-1))
                     %graphMatrix(pixel_no + 1, pixel_no) = costMatrix(i,j);
-                    graphMatrix(pixel_no, pixel_no + 1) = costMatrix(i,j+1);
+                    graphMatrix(pixel_no, pixel_no + 1) = costMatrix(i,j+1);       
                 end                                        
             end 
             
