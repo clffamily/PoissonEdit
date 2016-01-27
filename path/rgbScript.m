@@ -14,7 +14,7 @@ maxItr = 5;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-count = 1;
+rgbItr = 1;
 
 % First para is row(Y)
 previousK = calAvgK( simg, timg, boundaryPts, targetOffsetY, targetOffsetX); 
@@ -26,14 +26,16 @@ costMatrix = calCostMatrixRGBK( simg, timg, maskMatrix, targetOffsetY, targetOff
 findShortestPath; % Remember to specify the cost matrix paramters in the script.
 
 for i = 1 : maxItr
-    currentK = calAvgK( simg, timg, mat, yPara, xPara); 
+    currentK = calAvgK( simg, timg, mat, targetOffsetY, targetOffsetX); 
     if previousK == currentK
         break
     end
-    costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, currentK);
+    costMatrix = calCostMatrixRGBK( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, currentK);
     previousK = currentK;
     findShortestPath;
-    count = count + 1;
+    rgbItr = rgbItr + 1;
 end
 
-disp(sprintf('Totally running rgb interations for %g times.', count));
+disp(sprintf('Totally running rgb interations for %g times.', rgbItr));
+
+createShortestPathMask;

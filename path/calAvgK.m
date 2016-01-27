@@ -17,7 +17,8 @@ for i = 1 : totalPts
     cost_r_channel = (timgr(srow+rowNum-1, scol+colNum-1) - simgr(rowNum,colNum));
     cost_g_channel = (timgg(srow+rowNum-1, scol+colNum-1) - simgg(rowNum,colNum));
     cost_b_channel = (timgb(srow+rowNum-1, scol+colNum-1) - simgb(rowNum,colNum));
-    sumCost = cost_r_channel + cost_g_channel + cost_b_channel;
+    % sumCost = cost_r_channel + cost_g_channel + cost_b_channel;
+    sumCost = sumCost + sqrt((abs(cost_r_channel).^2) + (abs(cost_g_channel).^2) + (abs(cost_b_channel).^2));
             
 end
 

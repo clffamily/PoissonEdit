@@ -8,5 +8,7 @@
 %simg = double(imread('../images/cube/cube.jpg', 'JPG'));
 %timg = double(imread('../images/cube/wall.jpg', 'JPG'));
 
+k = calAvgK( simg, timg, boundaryPts, targetOffsetY, targetOffsetX);
+
 %first para is row(Y)
-costMatrix = calCostMatrixRGB( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, k); 
+costMatrix = calCostMatrixRGBK( simg, timg, maskMatrix, targetOffsetY, targetOffsetX, k); 

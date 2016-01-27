@@ -7,11 +7,16 @@
 % This is the parameter for input. 
 %   1 for user result, 
 %   2 for optimal result.
-fun = 1;
+fun = 2;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-im = double(imread(strcat(targetFolderPath, OPTIMAL_RESULT), 'JPG'));
+if fun == 1
+    im = double(imread(strcat(targetFolderPath, USER_RESULT), 'JPG'));
+else
+    im = double(imread(strcat(targetFolderPath, OPTIMAL_RESULT), 'JPG'));
+end 
+
 
 [ imr, img, imb ] = decomposeRGB( im );
 
@@ -26,12 +31,12 @@ newLineImage = zeros(targetRow,targetCol);
 for i = 1 : sourceRow
     for j = 1 : sourceCol
         if fun == 1
-            if boundaryPts(i,j)
-                newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
+            if boundaryPts(i,j) == 0
+                newLineImage(targetOffsetY + i - 1, targetOffsetX + j - 1) = 1;
             end
         else
             if mat2(i,j) == 0 
-                newLineImage(offsetY + i - 1, offsetX + j - 1) = 1;
+                newLineImage(targetOffsetY + i - 1, targetOffsetX + j - 1) = 1;
             end
         end 
         %if mat2(i,j) == 0 %optimal
@@ -49,7 +54,7 @@ imb(newLineImage == 1) = 0;
 %imshow(newLineImage);
 
 targetWithBoundary = composeRGB(imr, img, imb);
-imshow(uint8(targetWithBoundary));
+%imshow(uint8(targetWithBoundary));
 
 if fun == 1
     imwrite(uint8(targetWithBoundary), strcat(targetFolderPath, USER_RESULT_BOU));
