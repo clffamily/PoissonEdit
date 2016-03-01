@@ -31,7 +31,7 @@ newLineImage = zeros(targetRow,targetCol);
 for i = 1 : sourceRow
     for j = 1 : sourceCol
         if fun == 1
-            if boundaryPts(i,j) == 0
+            if boundaryPts(i,j) == 1
                 newLineImage(targetOffsetY + i - 1, targetOffsetX + j - 1) = 1;
             end
         else
