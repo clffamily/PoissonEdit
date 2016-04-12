@@ -1,13 +1,13 @@
 
 % ----------------------------------
 % This script creates the mask of the shortest path found previously on findShortestPath.
-% Write the mask into the targetFolderPath.
+% Write the mask into the target image.
 % ----------------------------------
 
 % This is the parameter for input. 
 %   1 for user result, 
 %   2 for optimal result.
-fun = 2;
+fun = 1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
