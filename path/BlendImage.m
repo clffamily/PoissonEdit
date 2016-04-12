@@ -22,7 +22,7 @@ fun = 1;
 if fun == 1
     imMask = uint8(imread(strcat(sourceFolderPath, USER_MASK)));
 else
-    imMask = uint8(imread(strcat(sourceFolderPath, OPTIMAL_MASK)));
+    imMask = uint8(imread(strcat(targetFolderPath, OPTIMAL_MASK)));
 end 
 
 %figure;
@@ -46,7 +46,7 @@ imwrite(imnew, '../images/Result.jpg', 'JPG'); % used as buffer.
 if fun == 1
     imwrite(imnew, strcat(sourceFolderPath, USER_RESULT), 'JPG');
 else
-    imwrite(imnew, strcat(sourceFolderPath, OPTIMAL_RESULT), 'JPG');
+    imwrite(imnew, strcat(targetFolderPath, OPTIMAL_RESULT), 'JPG');
 end 
 
 % poisson1(50, 51, 5);
