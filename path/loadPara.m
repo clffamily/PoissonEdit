@@ -5,22 +5,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Parameters for source and target images.
-simg = double(imread('../images/qq/qq_RGB/qq.jpg', 'JPG'));
-timg = double(imread('../images/qq/qq_RGB/background.jpg', 'JPG'));
+simg = double(imread('../images/test/sand/car.jpg', 'JPG'));
+timg = double(imread('../images/test/sand/background.jpg', 'JPG'));
 
 % Width and height of the source image.
-sourceImageWidthX = 478;
-sourceImageHeightY = 420;
+sourceImageWidthX = 350;
+sourceImageHeightY = 270;
 
 % Offset location in the target image.
-targetOffsetX = 10;
-targetOffsetY = 10;
+targetOffsetX = 295;
+targetOffsetY = 135;
 
 % The source folder path.
-sourceFolderPath = '../images/qq/qq_RGB';
+sourceFolderPath = '../images/test/sand';
 
 % The target folder path.
-targetFolderPath = '../images/qq/qq_RGB';
+targetFolderPath = '../images/test/sand';
 
 % Here are some constants.
 MASK = '/mask.jpg';
@@ -31,5 +31,7 @@ USER_RESULT_BOU = '/user_result_bou.jpg';
 OPTIMAL_MASK = '/optimal_mask.jpg';
 OPTIMAL_RESULT = '/optimal_result.jpg';
 OPTIMAL_RESULT_BOU = '/optimal_result_bou.jpg';
+SOURCE_USER_BOU = '/source_user_bou.jpg';
+SOURCE_OPTIMAL_BOU = '/source_optimal_bou.jpg';
 
-zeroAppro = 1e-20; % constant for zero approximation.
+zeroAppro = 1e-10; % constant for zero approximation.
