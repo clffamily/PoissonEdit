@@ -1,4 +1,4 @@
-function [ costMatrix ] = calCostMatrix( simg, timg, maskMatrix, srow, scol)
+function [ costMatrix ] = calCostMatrixLAB( simg, timg, maskMatrix, srow, scol)
 
 %source image has the same size as maskMatrix
 
@@ -6,7 +6,7 @@ function [ costMatrix ] = calCostMatrix( simg, timg, maskMatrix, srow, scol)
 [timgl, timga, timgb] = decomposeLAB(timg);
 
 costMatrix = maskMatrix;
-zeroAppro = 1e-20;
+zeroAppro = 1e-10;
 
 rows = size(costMatrix, 1);
 cols = size(costMatrix, 2);
