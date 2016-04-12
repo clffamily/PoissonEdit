@@ -1,5 +1,5 @@
 % ----------------------------------
-% This script creates boundary point matrix denoting user-drawn boundary.
+% Create the all-zero matrix with the user-specified boundary with number 1.
 % ----------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,4 +14,4 @@ for i = 1 : size(boundary{1},1)
     boundaryPts(firstNum, secondNum) = 1;
 end 
 
-imshow(boundaryPts);
+% wimshow(boundaryPts);
